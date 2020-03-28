@@ -1,8 +1,10 @@
 'use strict';
 
-fetch('data.json')
-.then((dataObj) => dataObj.json())
-.then((dataObj) => pushObjToLocalStorage(dataObj));
+const getDataFromServer = () => {
+    fetch('data.json')
+    .then((dataObj) => dataObj.json())
+    .then((dataObj) => pushObjToLocalStorage(dataObj));
+}
 
 const pushObjToLocalStorage = (dataObj) => {
 
