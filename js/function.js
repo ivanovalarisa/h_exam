@@ -17,9 +17,8 @@ const pushObjToLocalStorage = (dataObj) => {
     localStorage.setItem('dataGoods', JSON.stringify(dataObj));
 }
 
-const getDataFromLocalStorage = () => {
-    const dataGoods = JSON.parse(localStorage.getItem('dataGoods'));
-    return dataGoods;
+const getDataFromLocalStorage = () => { 
+    return JSON.parse(localStorage.getItem('dataGoods'));
 }
 
 const dataObj = getDataFromLocalStorage();
