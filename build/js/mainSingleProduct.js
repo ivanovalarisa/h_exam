@@ -1,0 +1,1 @@
+"use strict";document.addEventListener("DOMContentLoaded",function(){getDataFromServer().then(function(){displayProduct("men","333"),notAvailableStyle(),selectedSize(),defaultSelectedSize(),viewPhoto()})});

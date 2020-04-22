@@ -1,0 +1,284 @@
+{
+  "women": {
+    "dresses": [
+      {
+        "id": "10",
+        "review": [
+          {
+            "name": "MegG",
+            "rating": "5",
+            "comment": "This dress is stunning and extremely flattering on my apple body shape. The top can be worn on or off the shoulder and the fabric is soft and light."
+          },
+          {
+            "name": "Tiffany",
+            "rating": "4",
+            "comment": "Super comfy dress and somewhat flattering. The top fit better than the bottom half of the dress on my body. Just had a little excess fabric/poof on the bottom half. I even sized down. I don't think the next size down would fit as well up top. A little long for my taste but perfect for work. Would buy it again."
+          }
+        ]
+     },
+      {
+        "id": "12",
+        "review": [
+          {
+            "name": "MaryLisa",
+            "rating": "5",
+            "comment": "I wore this dress for my sons wedding. It was so comfortable and fit well. Had a lot of compliments and inquiries as to where I bought it. I was not too sure about wearing a long dress but once I tried it on I knew it was the right dress. I ordered the navy and it was a beautiful rich color. The dress has a little stretch to it so was very comfortable and flattering. I hope I have an occasion to wear it again. Perfect dress."
+          }
+        ]
+      },
+      {
+        "id": "14",
+        "review": [
+          {
+            "name": "Dorinda",
+            "rating": "5",
+            "comment": "When I first saw this dress I knew I had to have it!! I am soooo glad I bought it. The silhouette is very flattering and it's not sleeveless!!! The short sleeves are the perfect length for someone who does not like to have their arms out!! I am only 5'1 so I needed to alter the length. It's going to be perfect when I wear it to my husband's formal military retirement gala!!!! I also bought it in silver for a future Sorority (AKA) formal!!! I can't wait to wear them!! LOVE my new gowns!!"
+          },
+          {
+            "name": "Kathy",
+            "rating": "1",
+            "comment": "Loved it looked great for my son's wedding. I took it to the dry cleaners and we found out it said machine wash. So I did cold water, delicate detergent and air dried. It came out a fuzzy mess and I can't believe I paid for this for 1 wearing"
+          }
+        ]
+      }
+      ],
+    "shirts": [
+      {
+        "id": "24",
+        "review": [
+          {
+            "name": "Lee",
+            "rating": "4",
+            "comment": "This top is super soft, and flows well. I thought I would love it, but I guess it just wasn't my style."
+          }
+        ]
+      },
+      {
+        "id": "25",
+        "review": [
+          {
+            "name": "SB mom",
+            "rating": "5",
+            "comment": "Very comfortable and relaxed fit. I like the chocolate color - it is really nice to wear. Sanctuary shirts are a definite staple in the wardrobe!"
+          },
+          {
+            "name": "Muffet1",
+            "rating": "3",
+            "comment": "I bought this a week ago and is not happy with it. I expected a softer look. I will not return it but will wear it around the house and run errands."
+          }
+        ]
+      },
+      {
+        "id": "125"
+      }
+    ],
+    "jeans": [
+      {
+        "id": "13",
+        "review": [
+          {
+            "name": "KatDV",
+            "rating": "5",
+            "comment": "Bought 3 pair last year. They were so great, bought 2 more before summer ended. This year, went back for white, and now I am thinking of the black also. They fit well, look great, not to tight in the wrong place. They are comfortable to wear. Wash well, warm water. I spilled salad dressing on a pair, a little spot cleaner and everything came out. I throw them in the dryer for 2 minutes to get the wrinkles out and hang to dry. They do run a little on the large size, but I can wear my regular size and also size down one for a tighter fit. They do not stretch out during wearing. I do roll up the cuff sometimes for a shorter look. Great capri!!!!"
+          },
+          {
+            "name": "Miumi",
+            "rating": "3",
+            "comment": "This capri jeans are nice however they run big. I’m size 6 in regular jeans and because of the overview of the reviews I went ahead and order size 4, is big. Next time I’ll order it in size 2. I’ll keep these though my mom is going to love them. For the record I’m 5’2” and weight 138 pounds."
+          },
+          {
+            "name": "Alicia",
+            "rating": "4",
+            "comment": "I ordered these in the \"Riverside\" color and in the \"Caneel\" color. Both are the same size, at least that is what the tags say. When I tried them on, one fits great, but the other one is too small. I had tried on a size 12, my regular size, at the store and they were too baggy, so I ordered 10 in the two colors. It is a shame that the sizing is wrong on these, because I like the style and length of them and would have ordered more colors, but now I don't know what size to order. I can recommend these as long as you have the opportunity to try them on before you buy them.\nDescribe your body type:: Curvy\nWhere did you purchase this item?: Online\nWhat is your gender?: Female\nWhat is your age?: 50-60\nHow often do you shop at macys.com?: Frequently"
+          }
+        ]
+      },
+      {
+        "id": "16",
+        "review": [
+          {
+            "name": "CasualAtWork",
+            "rating": "5",
+            "comment": "They must have modified it in the past year as another reviewer stated that the cuff was permanently sewn-in. On mine the cuff was simply tact in two places so very easy to let down. My only issue is that Macy's does not tend to repeat the same colors. For instance I love the aquamint. I prefer it to the other aqua color in that it's a pale green. However all of the tops are Aquabrook which is bluer. I'm extremely lucky in that I bought a plaid shirt at the same time and also a tank top that matched. If I had not done so I would have been stuck. And then I would have had to have returned what I anticipate will be a wonderful summer pant"
+          },
+          {
+            "name": "Wendy",
+            "rating": "4",
+            "comment": "Love theses jeans, so comfy. I am not curvy, but don’t like my jeans super tight. I wear a size smaller than my normal jean size and still have room."
+          }
+        ]
+      },
+      {
+        "id": "21",
+        "review": [
+          {
+            "name": "Kymberly",
+            "rating": "5",
+            "comment": "Very comfortable and cute fit to any style. The relaxed fit makes it easy to dress it up or down, these jeans fit my curves yet they are not restrictive."
+          }
+        ]
+      }
+    ],
+    "t-shirts": [
+      {
+        "id": "113",
+        "review": [
+          {
+            "name": "joanne",
+            "rating": "5",
+            "comment": "This shirt fit perfectly and washes like a dream. I just wash and hang it to dry. It’s great for traveling since it doesn’t wrinkle. Love Alfani!"
+          },
+          {
+            "name": "News4you",
+            "rating": "3",
+            "comment": "Lovely classical styling, but too small for me. At 5 fit 4 in. I ordered petite, but it was too snug in the upper body and arms. The white is see through. It would only work as a layering item. The shirt drapes nicely."
+          }
+        ]
+      },
+      {
+        "id": "123",
+        "review": [
+          {
+            "name": "Gloria",
+            "rating": "5",
+            "comment": "I love Alfani clothing! But these T-Shirts are not your every day t-shirt. They are can be wore with blazers, jackets, or just by themselves! They look great with jeans or slacks.I The cut makes you look slimer!have them in many colors and designs..."
+          }
+        ]
+      },
+      {
+        "id": "128"
+      }
+    ]
+  },
+  "men": {
+    "jeans": [
+      {
+        "id": "33",
+        "review": [
+          {
+            "name": "HonestReviewer",
+            "rating": "4",
+            "comment": "no disappointment here. look nice and fit as expected. i was looking for a stretch/elastic fabric and these have it for sure. if anything, maybe you get the waist just slightly smaller if you're in between sizes since it'll stretch."
+          },
+          {
+            "name": "Alexander",
+            "rating": "5",
+            "comment": "Its very comfy Good flex materials Its really nice looking\n"
+          }
+        ]
+      },
+      {
+        "id": "333",
+        "review": [
+          {
+            "name": "KSB718",
+            "rating": "5",
+            "comment": "Got them for my husband he loves them and he looks great in them.\n"
+          }
+        ]
+      },
+      {
+        "id": "334",
+        "review": [
+          {
+            "name": "NokiaSam",
+            "rating": "4",
+            "comment": "I will be honest with you all, this is my 14th pair of Buffalo David Bitton jeans. I totally love this brand to death. My go to style are the Driven, Driven X, and King X. What I can tell you about these jeans; they are very soft and warm and they stretch with ease. The jeans cut are a relax fit at the waist and hips, but! Slim at the knees down. Best I can describe these jeans are a relax slim fit."
+          },
+          {
+            "name": "Brenna",
+            "rating": "5",
+            "comment": "My husband absolutely loves these jeans- he is a big guy (38 X 34) so have trouble finding jeans long enough for him. He wore them to a family dinner and was grateful for the stretch feature. My husband is a good eater :)"
+          },
+          {
+            "name": "OzMoses",
+            "rating": "5",
+            "comment": "I've purchased and worn this brand/style before. This particular pair is the best fitting and most comfortable jeans I've owned. Love them. Highly recommended!!"
+          }
+        ]
+      }
+    ],
+    "jackets": [
+      {
+        "id": "31",
+        "review": [
+          {
+            "name": "Jimmy",
+            "rating": "5",
+            "comment": "Great jacket. Price is reasonable and quality of jacket is good. I like it."
+          }
+        ]
+      },
+      {
+        "id": "32",
+        "review": [
+          {
+            "name": "likmacy05",
+            "rating": "4",
+            "comment": "It's a nice light weight casual jacket. Is runs a little small in the torso."
+          },
+          {
+            "name": "Jack",
+            "rating": "5",
+            "comment": "Super quality for its price, looks like a genuine leather."
+          }
+        ]
+      },
+      {
+        "id": "432",
+        "review": [
+          {
+            "name": "Andrew",
+            "rating": "4",
+            "comment": "he colors are very different than the pictures - the charcoal gray is very dark...closer to black than the gray in the picture. and the red is a very dark dull maroon color. I still like both of them but was a bit disappointed at the colors"
+          },
+          {
+            "name": "Tripitch",
+            "rating": "3",
+            "comment": "Nice fit and features, however the material is a little stiff for my liking. Good for casually going out, but not so much for active exercise."
+          },
+          {
+            "name": "julia",
+            "rating": "5",
+            "comment": "My youngest son picked this jacket out & my older son is getting one too. It’s a nice looking jacket."
+          }
+        ]
+      }
+    ],
+    "shirts": [
+      {
+        "id": "531",
+        "review": [
+          {
+            "name": "michele",
+            "rating": "5",
+            "comment": "Husband loved them. Dressy enough for work yet comfortable. Discreet enough that not advertising some designer's logo"
+          },
+          {
+            "name": "Leesa",
+            "rating": "4",
+            "comment": "Husband really likes this top and even got in two colors. But after first wash, they both shrunk! I cold washed and hung dried. He likes them so much that we're going to try starting with a size bigger and see if they fit good after washing."
+          }
+        ]
+      },
+      {
+        "id": "532"
+      },
+      {
+        "id": "533",
+        "review": [
+          {
+            "name": "Srpat22",
+            "rating": "4",
+            "comment": "Great quality t-shirt .. however runs bigger then normal. I usually wear a large .. but this was a bigger cut then a standard large. I will have to order medium next time."
+          },
+          {
+            "name": "CalvinKleinKors",
+            "rating": "5",
+            "comment": "Very comfortable shirt, runs a little big but not too bad. Very breathable as I've worn it outside doing physcial activity and never got too hot. I will be buying more of these shirts in different colors if they have them available in stock. Michael Kors never disappoints, always have and always will buy their clothes. Would recommend to anyone"
+          }
+        ]
+      }
+    ]
+  }
+}
