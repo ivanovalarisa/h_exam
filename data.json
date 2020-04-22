@@ -1,5 +1,5 @@
 ﻿{
-  "womens": {
+  "women": {
     "dresses": [
       {
         "id": "10",
@@ -40,7 +40,7 @@
           "XL"
         ],
         "color": "white",
-        "short-description": "he Nicole Dress by Alice In The Eve is a lightweight linen dress with a flattering square neckline",
+        "short-description": "The Nicole Dress by Alice In The Eve is a lightweight linen dress with a flattering square neckline",
         "description": "The Nicole Dress by Alice In The Eve is a lightweight linen dress with a flattering square neckline This mini dress features a side split at the thigh, thick shoulder straps, made from a soft linen fabrication and comes in a white colourway. Keep it fresh on the hot days in this summer ready mini that can be teamed with sandals or sneakers for different looks.",
         "rating": "5",
         "quantity": "5",
@@ -280,7 +280,7 @@
       }
     ]
   },
-  "mens": {
+  "men": {
     "jeans": [
       {
         "id": "33",
