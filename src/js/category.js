@@ -32,6 +32,7 @@ let tempArr = [];
 	showPriceFilter();
 	setListenerToProductCard(containerProducts);
 	setListenerToCategories();
+	setListenersTosearchArea();
 })();
 
 function showCategoriesList(selectedCollection, title) {
@@ -111,13 +112,13 @@ function productCardHtml(collection, category, product, container) {
 				<div class="card-product__img">
 					<img class="card-img" src="img/product/${ collection }/${ product.photo[0] }" alt="">
 					<ul class="card-product__imgOverlay">
-						<li><button class="open-product"><i class="ti-search" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="open-product"></i></button></li>
-						<li><button class="buy-product"><i class="ti-shopping-cart" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="buy-product"></i></button></li>							
+						<li><button class="open-product" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="open-product"><i class="ti-search" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="open-product"></i></button></li>
+						<li><button class="buy-product" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="buy-product"><i class="ti-shopping-cart" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="buy-product"></i></button></li>							
 					</ul>
 				</div>
 				<div class="card-body">
 					<p>${ category }</p>
-					<h4 class="card-product__title"><a href="single-product.html">${ product.name }</a></h4>
+					<h4 class="card-product__title"><a href="single-product.html" class="open-product" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="open-product">${ product.name }</a></h4>
 					<p class="card-product__price">$${ product.price }</p>
 				</div>
 			</div>
@@ -262,27 +263,41 @@ function setListenerToBrands(brandsContainer, selectedCollection, selectedCatego
 
 function setListenerToProductCard(container) {
 	const openProduct = document.querySelectorAll('.open-product');
-	const buyProduct = document.querySelectorAll('.buy-product');
 
 	container.addEventListener('click', (event) => {
-		debugger;
 		const productId = event.target.getAttribute('data-id');
 		const productCollection = event.target.getAttribute('data-collection');
-		const btn = event.target.getAttribute('data-btn');
+		let btn = event.target.getAttribute('data-btn');		
 		
-		if (!btn) {
-			return;
-		}
+		if (event.target.tagName === 'I') {
+			btn = event.target.parentNode.getAttribute('data-btn');	
+			event.stopPropagation();					
+		}		
+
 		if (btn === 'open-product') {
-			openProduct.forEach(btn => location.href="/single-product.html");
-			displayProduct(productCollection, productId);
 
+			setDataInLocalStorage(productCollection, productId);
+			openProduct.forEach(btn => location.href="/single-product.html");			
+			
 		} else if (btn === 'buy-product') {
-			buyProduct.forEach(btn => location.href="/cart.html");
-		}
+			const collection = dataObj[productCollection];
+			let item = {};
 
+			Object.values(collection).forEach(categories => {
+				categories.forEach(product => {
+					if (productId === product.id) {
+						item.collection = productCollection,
+						item.id = productId;
+						item.name = product.name;
+						item.photo = product.photo[0];
+						item.price = product.price;
+						item.quantity = "1";
+						item.size = product.size[0];		
+					}
+				});		
+			});
 
-		console.log(productCollection, productId);		
+			setBuyProductInLS(item);		}		
 	});
 }
 
@@ -364,6 +379,7 @@ function sortProducts(sortOption, productContainer) {
 	let arrayOfProductsObj = [];
 
 	if (Array.isArray(tempArr[0])) { 
+		
 		tempArr.forEach(item => item.forEach(value => arrayOfProductsObj.push(value)));
 	} else {
 		arrayOfProductsObj = tempArr;
@@ -373,7 +389,7 @@ function sortProducts(sortOption, productContainer) {
 
 	switch (sortOption) {
 		case 'default':			
-			arrayOfProductsObj;
+			arrayOfProductsObj.sort(arraySortingByID);
 			break;
 			
 		case 'popularity': 
@@ -403,6 +419,16 @@ function arraySorting(productA, productB) {
 	} else if (+productA.price === +productB.price) {
 		return 0;
 	} else if (+productA.price < +productB.price) {
+		return -1;
+	}
+}
+
+function arraySortingByID(productA, productB) {
+	if (+productA.id > +productB.id) {
+		return 1;
+	} else if (+productA.id === +productB.id) {
+		return 0;
+	} else if (+productA.id < +productB.id) {
 		return -1;
 	}
 }
@@ -510,30 +536,61 @@ function setListenerToPageButtons(list, array, container) {
 	});
 }
 
-setListenersTosearchArea();
-
 function setListenersTosearchArea() {
 	const dataSearch = document.getElementById('searchProduct');
-	const btnSearch = document.getElementById('productBtnSearch');	
-
-	dataSearch.addEventListener('keypress', (event) => {
-		if (event.key === 'Enter') {
-			searchProduct(dataSearch.value);
-		}
-	});
+	const btnSearch = document.getElementById('productBtnSearch');
+	
+	dataSearch.oninput = () => {
+		searchProduct(dataSearch.value.toLowerCase().trim());
+	}
 	
 	btnSearch.addEventListener('click', () => searchProduct(dataSearch.value));
 }
 
 function searchProduct(string) {
-	const pattern = /^[A-Za-z0-9-\s]{5,30}$/;
+	const productList = document.querySelectorAll('.product-card');
 
-	if (!pattern.test(string)) {
-		console.log('error!');
-		return;
+	if (string !== '') {
+		productList.forEach(product => {
+			if (product.innerText.toLowerCase().search(string) === -1) {
+				product.classList.add('hide');
+			} else {
+				product.classList.remove('hide');
+			}
+		});
+	} else {
+		productList.forEach(product => product.classList.remove('hide'));
 	}
-	
-	
+}
 
-	console.log(string);
+function setDataInLocalStorage(collection, id) {
+	console.log(collection);
+	console.log(id);
+	
+	let data = {
+		collection: collection, 
+		id: id
+	};
+
+	console.log(data);
+	
+	localStorage.setItem('dataSelectedObj', JSON.stringify(data));
+}
+
+function setBuyProductInLS(item) {
+	let dataCardGoods = [];
+
+	if (localStorage.getItem('dataCart')) {
+
+		dataCardGoods = getDataFromLSShoppingCart();		
+	}
+
+	dataCardGoods.push(item);
+	
+	localStorage.setItem('dataCart', JSON.stringify(dataCardGoods));
+}
+
+function getDataFromLSShoppingCart() {
+	let dataCardGoods = JSON.parse(localStorage.getItem('dataCart'));
+	return dataCardGoods;
 }

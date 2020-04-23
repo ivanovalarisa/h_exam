@@ -16,18 +16,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     getDataFromServer().then(() => {
-        let id = '333';
-        let collection = 'men';
+        // let id = '333';
+        // let collection = 'men';
 
-        displayProduct(collection, id);
-
+        // displayProduct(collection, id);
+        let obj = JSON.parse(localStorage.getItem('dataSelectedObj'));
+        displayProduct(obj.collection, obj.id);
+        
         notAvailableStyle();
         selectedSize();
         defaultSelectedSize();
         viewPhoto();
     });
-
-
-
 
 });

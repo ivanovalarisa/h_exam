@@ -1,1 +1,1 @@
-"use strict";document.addEventListener("DOMContentLoaded",function(){getDataFromServer().then(function(){displayProduct("men","333"),notAvailableStyle(),selectedSize(),defaultSelectedSize(),viewPhoto()})});
+"use strict";document.addEventListener("DOMContentLoaded",function(){getDataFromServer().then(function(){var e=JSON.parse(localStorage.getItem("dataSelectedObj"));displayProduct(e.collection,e.id),notAvailableStyle(),selectedSize(),defaultSelectedSize(),viewPhoto()})});

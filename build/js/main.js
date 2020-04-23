@@ -1,1 +1,1 @@
-"use strict";var categories={women:"women's collection",men:"men's collection"};getDataFromServer();
+"use strict";
