@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Aroma Shop - Home</title>
+  <title>Aroma Shop - Category</title>
   <link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="/vendors/fontawesome/css/all.min.css">
@@ -25,8 +25,9 @@
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
             <ul class="nav-shop">
-                <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle" id="show"> </span></button> </li>
-                <li class="nav-item"><a class="button button-header" href="cart.html">Buy Now</a></li>
+              <li class="nav-item"><button><i class="ti-search"></i></button></li>
+              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+              <li class="nav-item"><a class="button button-header" href="category.html">Buy Now</a></li>
             </ul>
           </div>
         </div>
@@ -35,46 +36,84 @@
   </header>
 	<!--================ End Header Menu Area =================-->
 
-  <main class="site-main">
+	<!-- ================ start banner area ================= -->	
+	<section class="banner" id="category">
+		<div class="container">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Shop Category</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Shop Category</li>
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
 
-      <!--================ Hero banner start =================-->
-      <section class="hero-banner">
-          <div class="container">
-              <div class="row no-gutters align-items-center pt-60px">
-                  <div class="col-5 d-none d-sm-block">
-                      <div class="hero-banner__img">
-                          <img class="img-fluid" src="img/home/hero-banner.png" alt="">
-                      </div>
-                  </div>
-                  <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
-                      <div class="hero-banner__content">
-                          <h4>Shop is fun</h4>
-                          <h1>Quarantine time</h1>
-                          <p>Free shipping only from us. Stay home!</p>
-                          <a class="button button-hero" href="category.html">Browse Now</a>
-                      </div>
-                  </div>
-              </div>
+
+	<!-- ================ category section start ================= -->
+  <section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+          <div class="sidebar-categories"></div>
+
+          <div class="sidebar-filter">
+            <div class="top-filter-head">Product Filters</div>
+            <div class="common-filter common-filter-categories"></div>
+            <div class="common-filter common-filter-brands"></div>
+            <div class="common-filter common-filter-price"></div>
           </div>
-      </section>
-      <!--================ Hero banner start =================-->
+        </div>
 
-
-      <!-- ================ trending product section start ================= -->
-      <section class="section-margin calc-60px">
-          <div class="container">
-              <div class="section-intro pb-60px">
-                  <p>Popular Item in the market</p>
-                  <h2>Trending <span class="section-intro__style">Product</span></h2>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+          <!-- Start Filter Bar -->
+          <div class="filter-bar d-flex flex-wrap align-items-center" id="sortSelectors">
+            <div class="sorting">
+              <select class="product-sorting custom-select" data-sort="product-sorting">
+                <option value="default">Default</option>
+                <option value="popularity">Popularity</option>
+                <option value="newest-arrivals">Newest Arrivals</option>
+                <option value="price-low-to-high">Price: Low to high</option>
+                <option value="price-high-to-low">Price: High to low</option>
+              </select>
+            </div>
+            <div class="sorting mr-auto">
+              <select class="product-show-quantity custom-select" data-sort="product-quantity">
+                <option value="show all">Show All</option>
+                <option value="18">Show 18</option>
+                <option value="12">Show 12</option>
+                <option value="9">Show 9</option>
+              </select>
+            </div>
+            <div>
+              <div class="input-group filter-bar-search">
+                <input type="text" placeholder="Search" name="search" id="searchProduct">
+                <div class="input-group-append">
+                  <button type="button"><i class="ti-search" id="productBtnSearch"></i></button>
+                </div>
               </div>
-              <div class="row" id="trendProducts">
-              </div>
+            </div>
           </div>
-      </section>
-      <!-- ================ trending product section end ================= -->
+          <!-- End Filter Bar -->
 
-  </main>
 
+          <!-- Start Best Seller -->
+          <section class="lattest-product-area pb-40 category-list">
+            <div class="row row-products-list"></div>
+            <div class="row product-pages"></div>
+          </section>
+          <!-- End Best Seller -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ category section end ================= -->		  
   <!--================ Start footer Area  =================-->	
 	<footer>
 		<div class="footer-area footer-only">
@@ -92,9 +131,9 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Quick Links</h4>
 							<ul class="list">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="category.html">Shop</a></li>
-								<li><a href="contact.html">Contact</a></li>
+                              <li><a href="index.html">Home</a></li>
+                              <li><a href="category.html">Shop</a></li>
+                              <li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -141,12 +180,10 @@
 	</footer>
 	<!--================ End footer Area  =================-->
 
-
-
   <script src="/vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="/vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="/js/function.js"></script>
-  <script src="/js/index.js"></script>
+  <script src="/js/category.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>

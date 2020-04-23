@@ -6,17 +6,27 @@ const gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     babel = require('gulp-babel'),
-    rename = require('gulp-rename'),//
-    del = require('del');//
+    rename = require('gulp-rename'),
+    sourcemaps = require('gulp-sourcemaps');
+
+const del = require('del');
 
 gulp.task('del', function() {
     return del('build/');
 });
 
+(async () => {
+    const deletedPaths = await del(['build/'], {dryRun: true});
+
+    console.log('Files and directories that would be deleted:\n', deletedPaths.join('\n'));
+})();
+
 gulp.task('sass', function() {
     return gulp.src('src/scss/**/*.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(rename({suffix: '.min'}))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('build/css/'))
         .pipe(browserSync.stream());
 });
@@ -34,10 +44,12 @@ gulp.task('html', function() {
 
 gulp.task('script', function() {
     return gulp.src('src/js/**/*.js')
+        .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['@babel/preset-env']
         }))
         .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('build/js/'))
         .pipe(browserSync.stream());
 });

@@ -28,7 +28,7 @@ const dataObj = getDataFromLocalStorage();
 // console.log(Object.values(Object.values(dataObj[categoryItem]))[0]);
 
 function displayProduct(collection, id) {
-    // console.log(dataObj);
+
     for (let categoryItem in dataObj) {
         if(categoryItem === collection) {
             for(let [subcategories, categoryValues] of Object.entries(dataObj[categoryItem])) {
@@ -72,9 +72,11 @@ function displayProduct(collection, id) {
                                 </div>`);
 
                         Object.entries(item)[4][1].forEach(function(itemSize, ind, arrSize) {
-                            document.getElementById('size').insertAdjacentHTML('afterbegin', `
+                            document.getElementById('size').insertAdjacentHTML('beforeend', `
                                 <div><span>${arrSize[ind]}</span></div>`);
                         });
+
+
                         transferDataProductToCart(item, collection);
                     }
                 });
@@ -114,13 +116,20 @@ function localStorageGet() {
     return info;
 }
 
+let quantity = localStorageGet();
+showQuantityGoodsInBasket(quantity);
+
+function showQuantityGoodsInBasket(quantityGoods) {
+    document.getElementById('show').innerHTML = quantityGoods.length;
+}
+
 function transferDataProductToCart(product, collection, dataCart) {
     if(document.getElementById('size').dataset['quantity'] === "0") {
         notAddToCart();
         return;
     }
-
     document.getElementById('add-cart').addEventListener('click', function(){
+
         let dataProductToCart = {}; //объект, который будет записываться в localStorage
         let currentCartItems = localStorageGet(dataCart) || [];
 
@@ -150,6 +159,7 @@ function transferDataProductToCart(product, collection, dataCart) {
         function localStorageSet(ar) {
             localStorage.setItem('dataCart', JSON.stringify(ar));
         }
+
         localStorageSet(currentCartItems);
 
     });
@@ -194,9 +204,6 @@ function notAvailableStyle() {
         }
     }
 }
-
-
-
 
 function notAddToCart() {
     let addCart = document.getElementById('add-cart');

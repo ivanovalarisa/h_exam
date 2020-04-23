@@ -1,6 +1,6 @@
 'use strict';
 
-function arr() {
+function catchClickOnArrow() {
     let arrows = document.getElementsByClassName('items-count');
     for(let item of arrows) {
         if(!item.classList.contains('disabled')) {
@@ -19,7 +19,7 @@ function arr() {
         }
     }
 }
-arr();
+catchClickOnArrow();
 
 function incrementInputValue(inpt, increment) {
     const val = inpt.value;

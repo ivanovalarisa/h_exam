@@ -25,9 +25,8 @@
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
             <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+                <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle" id="show"> </span></button> </li>
+                <li class="nav-item"><a class="button button-header" href="cart.html">Buy Now</a></li>
             </ul>
           </div>
         </div>
@@ -53,39 +52,35 @@
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
-  
-  
+
+
   <!--================Checkout Area =================-->
   <section class="checkout_area section-margin--small">
       <div class="container">
           <div class="billing_details">
               <div class="row">
-                  <div class="col-lg-8">
+                  <div class="col-lg-6">
                       <h3>Billing Details</h3>
                       <form name="orderForm" class="row contact_form" action="#" method="post" novalidate="novalidate">
 
                           <div class="col-md-6 form-group p_star">
-                              <div id="formValidateFirstName" class="formValidateInvisible">Enter First Name</div>
+                              <div id="errorTextFirstName" class="errorTextInvisible">Enter First Name</div>
                               <input type="text" name="firstName" class="form-control" id="first"  placeholder="First name">
-                              <!--                            <span class="placeholder" data-placeholder="First name"></span>-->
                           </div>
                           <div class="col-md-6 form-group p_star">
-                              <div id="formValidateLastName" class="formValidateInvisible">Enter Last Name</div>
+                              <div id="errorTextLastName" class="errorTextInvisible">Enter Last Name</div>
                               <input type="text" name="lastName" class="form-control" id="last"  placeholder="Last name">
-                              <!--                            <span class="placeholder" data-placeholder="Last name"></span>-->
                           </div>
                           <div class="col-md-6 form-group p_star">
-                              <div id="formValidatePhoneNumber" class="formValidateInvisible">Enter Phone Number</div>
+                              <div id="errorTextPhoneNumber" class="errorTextInvisible">Enter Phone Number</div>
                               <input type="text" name="number" class="form-control" id="number"  placeholder="Phone number">
-                              <!--                            <span class="placeholder" data-placeholder="Phone number"></span>-->
                           </div>
                           <div class="col-md-6 form-group p_star">
-                              <div id="formValidateEmail" class="formValidateInvisible">Enter E-mail</div>
+                              <div id="errorTextEmail" class="errorTextInvisible">Enter E-mail</div>
                               <input type="text" class="form-control" id="email" name="Email" placeholder="Email Address">
-                              <!--                            <span class="placeholder" data-placeholder="Email Address"></span>-->
                           </div>
                           <div class="col-md-12 form-group p_star">
-                              <div id="formValidateCity" class="formValidateInvisible">Choose City</div>
+                              <div id="errorTextCity" class="errorTextInvisible">Choose City</div>
                               <select name="citySelect" class="country_select city_select">
 
                                   <option value="1">City</option>
@@ -99,8 +94,8 @@
                               </select>
                           </div>
                           <div class="col-md-12 form-group p_star">
-                              <div id="formValidateNewPostOffice" class="formValidateInvisible">Choose City</div>
-                              <input type="text" class="form-control" id="add1" name="newPostOffice" placeholder="New Post Office     (example: '#3')">
+                              <div id="errorTextPostOffice" class="errorTextInvisible">Choose New Post Office</div>
+                              <input type="text" class="form-control" id="add1" name="newPostOffice" placeholder="Number New Post Office "/>
                               <span class="placeholder" data-placeholder="Address line 01"></span>
                           </div>
                           <div class="col-md-12 form-group mb-0">
@@ -108,27 +103,29 @@
                           </div>
                       </form>
                   </div>
-                  <div class="col-lg-4">
-                      <div class="order_box">
-                          <h2>Your Order</h2>
-                          <ul class="list">
-                              <li><a href="#"><h4>Product <span>Total</span></h4></a></li>
-                              <li><a href="#">501`93 Pride Shorts Tie Dye Pink <span class="middle">x 01</span> <span class="last">$720.00</span></a></li>
-                              <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-                              <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
+                  <div id="orderTab" class="col-lg-6">
+                  </div>
 
-                          </ul>
-                          <ul class="list list_2">
-                              <li><a href="#">Subtotal <span>$2160.00</span></a></li>
-                              <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                              <li><a href="#">Total <span>$2210.00</span></a></li>
-                          </ul>
-                          <div id="checkLine" class="last">Check if all fields are entered correctly</div>
-                          <div class="text-center">
-                              <a id="btnConfirm" class="button button-paypal" href="#">Confirm</a>
+                  <!-- Modal -->
+                  <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="resultModalTitle">Your order : <span id="orderNumber"></span></h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                                  <span id="orderResult"></span>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                              </div>
                           </div>
                       </div>
                   </div>
+
               </div>
           </div>
       </div>

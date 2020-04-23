@@ -2,20 +2,27 @@
 
 addDataProductToCart();
 
-
-
-
 function addDataProductToCart() {
+
+    let tbody = document.getElementById('tbody');
+    if(tbody.length !== 0) {
+        for (let i = tbody.childNodes.length - 1; i > 0; i--) {
+            tbody.removeChild(tbody.childNodes[i]);
+        }
+    }
+
     const getDataFromLocalStorage = () => JSON.parse(localStorage.getItem('dataCart'));
 
     if (localStorage.getItem('dataCart')) {
         getDataFromLocalStorage();
     }
     const dataCart = getDataFromLocalStorage();
-    // console.log(dataCart);
+
+    let quant = dataCart.length;
+    showQuantityGoodsInBasket(quant);
 
     for(let it in dataCart) {
-        document.getElementById('tbody').insertAdjacentHTML('beforeend', `
+        tbody.insertAdjacentHTML('beforeend', `
                             <tr data-id="${dataCart[it].id}">
                               <td>
                                   <div class="media">
@@ -31,14 +38,14 @@ function addDataProductToCart() {
                                   <h5>$${dataCart[it].price}</h5>
                               </td>
                               <td>
-                                  <div class="product_count">
+                                  <div class="product_count" data-price="${dataCart[it].price}" data-id="${dataCart[it].id}">
                                       <button class="reduced items-count" type="button"><i class="ti-angle-left"></i></button>
                                       <input type="text" name="qty" size="2" maxlength="12" value="${dataCart[it].quantity}" title="Quantity:" class="input-text qty">
                                       <button class="increase items-count" type="button"><i class="ti-angle-right"></i></button>
                                   </div>
                               </td>
                               <td>
-                                  <h5 class="product-amount">$${calculationAmount(dataCart[it].price, dataCart[it].quantity)}</h5>
+                                  <h5 class="product-amount" id="product-amount">$${calculationAmount(dataCart[it].quantity, dataCart[it].price)}</h5>
                               </td>
                               <td>
                                 <button type="button" class="close" aria-label="Close">
@@ -49,8 +56,12 @@ function addDataProductToCart() {
     }
 }
 
-function calculationAmount(price, quantity) {
-    return price * quantity;
+function calculationAmount(quantity, price) {
+
+    let resultCalcAmount = Number(price * quantity);
+    let result = resultCalcAmount.toFixed(2);
+
+    return result;
 }
 
 function calculationAllProductAmount() {
@@ -63,9 +74,11 @@ function calculationAllProductAmount() {
             arr.splice(0, 1);
             let number = arr.join('');
             sum += Number(number);
+
         }
     }
-    displayAllProductAmount(sum);
+    let resSum = sum.toFixed(2);
+    displayAllProductAmount(resSum);
 }
 
 function displayAllProductAmount(sum) {
@@ -75,6 +88,9 @@ function displayAllProductAmount(sum) {
 
 calculationAllProductAmount();
 
+function localStorageSet(ob) {
+    localStorage.setItem('dataCart', JSON.stringify(ob));
+}
 
 function catchChangesInBasket() {
     let tbody = document.getElementById('tbody');
@@ -82,44 +98,46 @@ function catchChangesInBasket() {
     tbody.addEventListener('click', function (e) {
         const getDataFromLocalStorage = () => JSON.parse(localStorage.getItem('dataCart'));
         const currentCartItems = getDataFromLocalStorage();
+        let tr = e.target.parentNode.parentNode.parentNode;
 
-        // if(e.target.tagName === 'SPAN' || e.target.tagName ==='BUTTON') {
-
-        // нажатие на Х  +  удаление из localStorage
-        if(e.target.tagName === 'SPAN') { //нажатие на Х  +  удаление из localStorage
-            let tr = e.target.parentNode.parentNode.parentNode;
-            tr.dataset.delete = 'delete';
-            // console.log(tr);
-            // for(let item in tbody.children) {
-            //     console.log(tr.dataset.delete);
-            //     console.log(tbody.children[item].dataset);
-            //
-            //     if (tr.dataset.delete === tbody.children[item].dataset.delete) {
-            //
-            //         console.log(item);
-            //     }
-            // }
+        if(e.target.tagName === 'SPAN') {
             for(let it in currentCartItems) {
                 if(tr.dataset.id === currentCartItems[it].id) {
-                    if(tr.dataset.delete === 'delete') {
-                        let arr = currentCartItems.splice([it], 1);
-                        console.log(arr);
+                        currentCartItems.splice([it], 1);
+                        localStorageSet(currentCartItems);
+                }
+            }
+            addDataProductToCart();
+        }
+        else if(e.target.tagName === 'SPAN' || 'BUTTON') { //нажатие на arrows  (после всех изменений при нажатии на Continue Shopping или Proceed to checkout будет меняться в localStorage
+            let arrows = document.getElementsByClassName('items-count');
+            if(arrows) {
+                for(let arItem in arrows) {
+                    let dataId = tr.parentNode.dataset.id;
+                    let arrowId = arrows[arItem].parentNode.dataset.id;
+
+                    if(dataId === arrowId) {
+                        let qnt = arrows[arItem].parentNode.children[1].value;
+                        let price = arrows[arItem].parentNode.attributes[1].value;
+                        let value = calculationAmount(qnt, price);
+
+                        displayCalc(value);
                     }
                 }
             }
-            console.log(currentCartItems);
-            addDataProductToCart();
-
-            // console.log(currentCartItems);
-        } else if(e.target.tagName === 'SPAN' || 'BUTTON') { //нажатие на arrows  (после всех изменений при нажатии на Continue Shopping или Proceed to checkout будет меняться в localStorage
-
-        } else if(e.target.tagName === 'SPAN' || 'BUTTON') { //нажатие на input    !!! change | keyup
-
-        } else if(e.target.tagName === 'SPAN' || 'BUTTON') { //нажатие на input    !!! change | keyup
-
         }
-
+        let quantity = currentCartItems.length;
+        showQuantityGoodsInBasket(quantity);
     })
+
+}
+
+function displayCalc(value) {
+    document.getElementById('product-amount').innerHTML = '$' + value;
 }
 
 catchChangesInBasket();
+
+function showQuantityGoodsInBasket(quantityGoods) {
+    document.getElementById('show').innerHTML = quantityGoods;
+}

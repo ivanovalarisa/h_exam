@@ -1,45 +1,45 @@
 //--------- Start Filter Bar -----------//
 .filter-bar {
 	padding: 0px 20px 10px 20px;
-	background: #f1f6f7;
-	margin-bottom: 30px;
-
+  background: #f1f6f7;
+  margin-bottom: 30px;
+		
 	a,i{
 		color:$black;
-	}
+  }	
+  
+  &-search{
+    margin-top: 10px;
+    input{
+      border: 1px solid #eee;
+      font-size: 14px;
+      color: #999999;
+      height: 38px;
+      padding-left: 15px;
 
-	&-search{
-		margin-top: 10px;
-		input{
-			border: 1px solid #eee;
-			font-size: 14px;
-			color: #999999;
-			height: 38px;
-			padding-left: 15px;
+      &:focus{
+        outline: 0;
+        box-shadow: none;
+      }
 
-			&:focus{
-				outline: 0;
-				box-shadow: none;
-			}
+      &::placeholder{
+        color: #999999;
+      }
+    }
 
-			&::placeholder{
-				color: #999999;
-			}
-		}
+    button{
+      background: transparent;
+      border: 1px solid #eee;
+      background: #fff;
+      border-left: 0;
+      padding-right: 15px;
 
-		button{
-			background: transparent;
-			border: 1px solid #eee;
-			background: #fff;
-			border-left: 0;
-			padding-right: 15px;
-
-			i,span{
-				font-size: 14px;
-				color: #999999;
-			}
-		}
-	}
+      i,span{
+        font-size: 14px;
+        color: #999999;
+      }
+    }
+  }
 }
 
 //--------- Start storting -----------//
@@ -49,9 +49,9 @@
 	.nice-select {
 		border-radius: 0px;
 		border: 1px solid #eee;
-		padding-right: 50px;
-		height: 38px;
-		color: #999999;
+    padding-right: 50px;
+    height: 38px;
+    color: #999999;
 		&:after {
 			right: 18px;
 		}
@@ -65,7 +65,7 @@
 //--------- Start Sidebar Category Dropdown ---------//
 .sidebar-categories {
 	.head {
-		font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', sans-serif;
 		line-height: 50px;
 		background: $primary-color;
 		padding: 0 30px;
@@ -76,11 +76,11 @@
 	.main-categories {
 		padding: 20px 28px;
 		background: #f1f6f7;
-		// box-shadow: 0 10px 10px rgba(153, 153, 153, 0.1);
-
-		.pixel-radio{
-			background: transparent !important;
-		}
+    // box-shadow: 0 10px 10px rgba(153, 153, 153, 0.1);
+    
+    .pixel-radio{
+      background: transparent !important;
+    }
 	}
 	.main-nav-list {
 		a {
@@ -115,7 +115,7 @@
 .sidebar-filter {
 	margin-top: 30px;
 	.top-filter-head {
-		font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', sans-serif;
 		line-height: 50px;
 		background: $primary-color;
 		padding: 0 30px;
@@ -133,18 +133,18 @@
 		// margin-top: 5px;
 	}
 	.common-filter {
-		background: #f1f6f7;
+    background: #f1f6f7;
 		border-bottom: 1px solid #eee;
 		padding-bottom: 25px;
 		.filter-list {
 			position: relative;
 			padding-left: 28px;
 		}
-	}
-
-	.common-filter:last-child{
-		border-bottom: 0;
-	}
+  }
+  
+  .common-filter:last-child{
+    border-bottom: 0;
+  }
 }
 .filter-list {
 	line-height: 32px;
@@ -268,10 +268,10 @@
 		border-radius: 0px;
 		border: 0px;
 		box-shadow: none;
-	}
-	.noUi-base{
-		background: #e8f0f2;
-	}
+  }
+  .noUi-base{
+    background: #e8f0f2;
+  }
 	.noUi-horizontal {
 		height: 6px;
 	}
@@ -319,14 +319,14 @@
 
 //--------- single top product ----------//
 .single-search-product {
-	padding: 10px 0;
-	@media(min-width: 1000px){
-		padding: 20px 0;
-	}
-	&-wrapper{
-		padding: 12px 20px 10px 30px;
-		border: 1px solid #EEEEEE;
-	}
+  padding: 10px 0;
+  @media(min-width: 1000px){
+    padding: 20px 0;
+  }
+  &-wrapper{
+    padding: 12px 20px 10px 30px;
+    border: 1px solid #EEEEEE;
+  }
 	img {
 		max-width: 70px;
 		height: auto;
@@ -335,8 +335,8 @@
 		margin-left: 15px;
 		margin-top: 5px;
 		.title {
-			font-family: 'Oswald', sans-serif;
-			color: $title-color;
+      font-family: 'Oswald', sans-serif;
+      color: $title-color;
 			margin-bottom: 0;
 			display: inline-block;
 			// background: -webkit-linear-gradient(-180deg, #555555, #555555);
@@ -344,7 +344,7 @@
 			// -webkit-text-fill-color: transparent;
 		}
 		.price {
-			font-size: 16px;
+      font-size: 16px;
 			font-weight: 500;
 			color: #777777;
 			span {
@@ -356,13 +356,13 @@
 				font-weight: 400;
 			}
 		}
-	}
-
-	&:hover{
-		.title{
-			color: $primary-color;
-		}
-	}
+  }
+  
+  &:hover{
+    .title{
+      color: $primary-color;
+    }
+  }
 	// position: relative;
 	// &:after {
 	// 	position: absolute;
