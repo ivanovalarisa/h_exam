@@ -1,4 +1,5 @@
 'use strict';
+
 let tempArr = [];
 
 (function showCollectionList() {
@@ -110,8 +111,8 @@ function productCardHtml(collection, category, product, container) {
 				<div class="card-product__img">
 					<img class="card-img" src="img/product/${ collection }/${ product.photo[0] }" alt="">
 					<ul class="card-product__imgOverlay">
-						<li><button><i class="ti-search" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }"></i></button></li>
-						<li><button><i class="ti-shopping-cart" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }"></i></button></li>								
+						<li><button class="open-product"><i class="ti-search" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="open-product"></i></button></li>
+						<li><button class="buy-product"><i class="ti-shopping-cart" data-collection="${ collection }" data-category="${ category }" data-id="${ product.id }" data-btn="buy-product"></i></button></li>							
 					</ul>
 				</div>
 				<div class="card-body">
@@ -259,14 +260,27 @@ function setListenerToBrands(brandsContainer, selectedCollection, selectedCatego
 	});
 }
 
-function setListenerToProductCard(container) {	
+function setListenerToProductCard(container) {
+	const openProduct = document.querySelectorAll('.open-product');
+	const buyProduct = document.querySelectorAll('.buy-product');
+
 	container.addEventListener('click', (event) => {
-		let productId = event.target.getAttribute('data-id');
-		let productCollection = event.target.getAttribute('data-collection');
+		debugger;
+		const productId = event.target.getAttribute('data-id');
+		const productCollection = event.target.getAttribute('data-collection');
+		const btn = event.target.getAttribute('data-btn');
 		
-		if (!productId) {
+		if (!btn) {
 			return;
 		}
+		if (btn === 'open-product') {
+			openProduct.forEach(btn => location.href="/single-product.html");
+			displayProduct(productCollection, productId);
+
+		} else if (btn === 'buy-product') {
+			buyProduct.forEach(btn => location.href="/cart.html");
+		}
+
 
 		console.log(productCollection, productId);		
 	});
@@ -282,7 +296,7 @@ function setListenerToPriceFilter() {
 
 			priceFilter(minValuePrice, maxValuePrice);
 			
-		}, 5000);
+		}, 3000);
 	});	
 }
 
@@ -305,42 +319,45 @@ function priceFilter(min, max) {
 	let selectedCollection;
 	let selectedCategory;
 
-	priceFilterValidation(min, max);
-
-	formArr.forEach(item => {
-		for (let input of item.elements) {
-			if (input.checked) {
-
-				if (input.name === 'collection') {
-					selectedCollection = input.id;
+	if (priceFilterValidation(min, max)) {
+		formArr.forEach(item => {
+			for (let input of item.elements) {
+				if (input.checked) {
+	
+					if (input.name === 'collection') {
+						selectedCollection = input.id;
+					}
+					
+					if (input.name === 'categories') {
+						selectedCategory = input.id;
+					}
+	
+					showProducts(selectedCollection, selectedCategory, min, max);
 				}
-				
-				if (input.name === 'categories') {
-					selectedCategory = input.id;
-				}
-
-				showProducts(selectedCollection, selectedCategory, min, max);
 			}
-		}
-	});
+		});
+	}
+
 }
 
 function priceFilterValidation(min, max) {
 	const minInput = document.getElementById('minPrice');
 	const maxInput = document.getElementById('maxPrice');
 
-	if (isNaN(+min)) {
+	if (isNaN(+min) || !min) {
 		minInput.classList.add('error');
 		maxInput.classList.remove('error');
-		return;
-	} else if (isNaN(+max)) {
+		return false;
+	} else if (isNaN(+max) || !max) {
 		minInput.classList.remove('error');
 		maxInput.classList.add('error');
-		return;
+		return false;
 	}
 	
 	minInput.classList.remove('error');
 	maxInput.classList.remove('error');
+
+	return true;
 }
 
 function sortProducts(sortOption, productContainer) {
@@ -434,9 +451,9 @@ function showPagesPaginationButtons(length, newArr, productContainer) {
 
 	for (let i = 1; i < length + 1; i++) {
 		if (i === 1) {
-			list.insertAdjacentHTML('beforeend', `<li class="pages-item active" data-page-number="${i}">${i}<li>`);
+			list.insertAdjacentHTML('beforeend', `<li class="pages-item pages-item-number active" data-page-number="${i}">${i}<li>`);
 		} else {
-			list.insertAdjacentHTML('beforeend', `<li class="pages-item" data-page-number="${i}">${i}<li>`);
+			list.insertAdjacentHTML('beforeend', `<li class="pages-item pages-item-number" data-page-number="${i}">${i}<li>`);
 		}
 	}
 
@@ -447,9 +464,12 @@ function showPagesPaginationButtons(length, newArr, productContainer) {
 
 function setListenerToPageButtons(list, array, container) {
 	let index = 0;
+	const btnList = document.querySelectorAll('.pages-item-number');
 
 	list.addEventListener('click', (event) => {
 		const btn = event.target.getAttribute('data-page-number');
+		
+			
 		
 		if (!btn) {
 			return;
@@ -470,17 +490,23 @@ function setListenerToPageButtons(list, array, container) {
 		} else {
 			index = +btn -1;
 		}
-
+		
 		if (index === array.length) {
 			index = array.length - 1;
 		} else if (index < 0) {
 			index = 0;
 		}
+		
+		btnList.forEach(item => {
+			if (item.classList.contains('active') && +btn !== index) {
+				item.classList.remove('active');
+			}
+		});
+		
+		btnList[index].classList.add('active');		
 
 		container.innerHTML = '';
 		array[index].forEach(product => productCardHtml(product.collection, product.category, product, container));
-
-		// tempArr = [...array[index]];
 	});
 }
 
