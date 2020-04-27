@@ -7,9 +7,8 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),
     babel = require('gulp-babel'),
     rename = require('gulp-rename'),
-    sourcemaps = require('gulp-sourcemaps');
-
-const del = require('del');
+    sourcemaps = require('gulp-sourcemaps'),
+    del = require('del');
 
 gulp.task('del', function() {
     return del('build/');
@@ -78,4 +77,4 @@ gulp.task('watch', function() {
     gulp.watch('src/*.html', gulp.parallel('html'));
 });
 
-gulp.task('default', gulp.series('del', gulp.parallel('sass', 'script', 'html', 'img', 'libs', 'copyOther', 'browser-sync', 'watch')));
+gulp.task('default', gulp.series('del', gulp.parallel('html', 'sass', 'script', 'img', 'libs', 'copyOther', 'browser-sync', 'watch')));

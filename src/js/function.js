@@ -2,11 +2,11 @@
 
 const getDataFromServer = () => {
     return fetch('../data.json')
-    .then((dataObj) => dataObj.json())
-    .then((dataObj) => {
-        pushObjToLocalStorage(dataObj);
-        return dataObj;
-    });
+        .then((dataObj) => dataObj.json())
+        .then((dataObj) => {
+            pushObjToLocalStorage(dataObj);
+            return dataObj;
+        });
 };
 
 const pushObjToLocalStorage = (dataObj) => {
@@ -120,6 +120,7 @@ let quantity = localStorageGet();
 showQuantityGoodsInBasket(quantity);
 
 function showQuantityGoodsInBasket(quantityGoods) {
+    console.log(quantityGoods);
     document.getElementById('show').innerHTML = quantityGoods.length;
 }
 

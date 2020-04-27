@@ -60,10 +60,10 @@ function setListenerToProductCard() {
 		const productCollection = event.target.getAttribute('data-collection');
 		let btn = event.target.getAttribute('data-btn');		
 		
-		// if (event.target.tagName === 'I') {
-		// 	btn = event.target.parentNode.getAttribute('data-btn');
-		// 	event.stopPropagation();
-		// }
+		if (event.target.tagName === 'I') {
+			btn = event.target.parentNode.getAttribute('data-btn');	
+			event.stopPropagation();					
+		}		
 
 		if (btn === 'open-product') {
 
@@ -131,15 +131,14 @@ function setBuyProductInLS(item) {
 	dataCardGoods.push(item);
 	let quantity = dataCardGoods.length;
 	showQuantityGoodsInBasket(quantity);
-	
 	localStorage.setItem('dataCart', JSON.stringify(dataCardGoods));
-}
-
-function showQuantityGoodsInBasket(quantityGoods) {
-	document.getElementById('show').innerHTML = quantityGoods;
 }
 
 function getDataFromLSShoppingCart() {
 	let dataCardGoods = JSON.parse(localStorage.getItem('dataCart'));
 	return dataCardGoods;
+}
+
+function showQuantityGoodsInBasket(quantityGoods) {
+	document.getElementById('show').innerHTML = quantityGoods;
 }

@@ -30,6 +30,7 @@ function showOrderTab(itemsObj) {
                           <thead>
                             <tr>
                               <th scope="col">Name</th>
+                              <th scope="col">Collection</th>
                               <th scope="col">Size</th>
                               <th scope="col">Price</th>
                               <th scope="col">Count</th>
@@ -40,6 +41,7 @@ function showOrderTab(itemsObj) {
         items.forEach(item => {
             html += `<tr>
                           <td>${item.name}</td>
+                          <td>${item.collection}</td>
                           <td>${item.size}</td>
                           <td>${item.price}</td>
                           <td>${item.quantity}</td>
